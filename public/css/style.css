@@ -1,0 +1,77 @@
+.header {
+    box-shadow: 0px 1px 0px gray;
+    padding: 15px 20px;
+}
+
+.header .inner-logo img {
+    max-height: 50px;
+    max-width: 100%;
+}
+
+.header .inner-menu ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header .inner-menu ul li {
+    margin-left: 20px;
+}
+
+.header .inner-menu ul li a {
+    font-size: 17px;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px 0px;
+    background-color: orange;
+}
+
+
+.section .box-head {
+    color: green;
+}
+
+.section .product-item {
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.section .product-item .inner-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.section .product-item .inner-content {
+    padding-left: 30px;
+    padding-bottom: 20px;
+}
+
+.section .product-item .inner-content .inner-price-new {
+    color: green;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.section .product-item .inner-content .inner-price-old {
+    color: red;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: line-through;
+}
+
+.section .product-item .inner-content .inner-discount {
+    padding: 5px 10px;
+    text-align: center;
+    background-color: red;
+    display: inline-block;
+    color: #fff;
+    border-radius: 10px;
+}

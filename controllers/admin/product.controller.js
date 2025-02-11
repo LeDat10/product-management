@@ -38,12 +38,18 @@ module.exports.index = async (req, res) => {
     )
     // End Pagination
 
-    // const products = await Product.aggregate([
-    //     { $skip: objectPagination.skip }, // Bỏ qua các tài liệu của các trang trước
-    //     { $limit: objectPagination.limitItem }, // Chỉ lấy dữ liệu của trang hiện tại
-    //     { $match: find }]);
 
-    const products = await Product.find(find).limit(objectPagination.limitItem).skip(objectPagination.skip).sort({ position: "desc" });
+    // Sort
+    let sort = {};
+    if (req.query.sortKey && req.query.sortValue) {
+        sort[req.query.sortKey] = req.query.sortValue;
+    } else {
+        sort.position = "desc";
+    }
+
+    // End Sort
+
+    const products = await Product.find(find).limit(objectPagination.limitItem).skip(objectPagination.skip).sort(sort);
 
     res.render("admin/pages/products/index", {
         titlePage: "Danh sách sản phẩm",
@@ -169,15 +175,15 @@ module.exports.edit = async (req, res) => {
 }
 
 // [PATCH] /admin/products/edit/:id
-module.exports.editPatch = async(req, res) => {
-    
+module.exports.editPatch = async (req, res) => {
+
     req.body.price = parseInt(req.body.price);
     req.body.discountPercentage = parseInt(req.body.discountPercentage);
     req.body.stock = parseInt(req.body.stock);
     req.body.position = parseInt(req.body.position);
 
     try {
-        await Product.updateOne({_id: req.params.id}, req.body);
+        await Product.updateOne({ _id: req.params.id }, req.body);
         req.flash("success", "Cập nhật thành công!");
 
     } catch (error) {

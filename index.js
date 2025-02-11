@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require("path");
 require("dotenv").config();
 const methodOverride = require('method-override');
 const database = require("./config/database");
@@ -31,8 +32,8 @@ app.use(flash());
 
 app.use(express.static(`${__dirname}/public`)); // nhúng file tĩnh
 
-// console.log(__dirname);
-
+// Tiny MCE
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
 
 // App locals variables
 app.locals.prefixAdmin = systemConfig.prefixAdmin;

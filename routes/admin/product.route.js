@@ -6,22 +6,22 @@ const upload = multer();
 // Cloudinary
 
 
-const route = express.Router();
+const router = express.Router();
 const controller = require('../../controllers/admin/product.controller');
 const validate = require("../../validates/admin/product.validate");
 const uploadCloud = require("../../middlewares/admin/uploadCloud.middleware");
 
-route.get('/', controller.index);
+router.get('/', controller.index);
 
-route.patch("/change-status/:status/:id", controller.changeStatus);
+router.patch("/change-status/:status/:id", controller.changeStatus);
 
-route.patch("/change-multi", controller.changeMulti);
+router.patch("/change-multi", controller.changeMulti);
 
-route.delete("/delete/:id", controller.deleteItem);
+router.delete("/delete/:id", controller.deleteItem);
 
-route.get("/create", controller.create);
+router.get("/create", controller.create);
 
-route.post(
+router.post(
     "/create",
     upload.single("thumbnail"),
     uploadCloud.upload,
@@ -29,15 +29,15 @@ route.post(
     controller.createPost
 );
 
-route.get("/edit/:id", controller.edit);
+router.get("/edit/:id", controller.edit);
 
-route.patch("/edit/:id",
+router.patch("/edit/:id",
     upload.single("thumbnail"),
     uploadCloud.upload,
     validate.createPost,
     controller.editPatch);
 
 
-route.get("/detail/:id", controller.detail);
+router.get("/detail/:id", controller.detail);
 
-module.exports = route;
+module.exports = router;

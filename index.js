@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const flash = require('express-flash');
 const systemConfig = require("./config/system");
+var moment = require('moment');
 
 const route = require('./routes/client/index.route');
 const routeAdmin = require('./routes/admin/index.route');
@@ -37,6 +38,7 @@ app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce
 
 // App locals variables
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
+app.locals.moment = moment;
 // Routes
 route(app);
 routeAdmin(app);

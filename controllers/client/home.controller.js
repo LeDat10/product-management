@@ -8,14 +8,26 @@ module.exports.index = async (req, res) => {
         deleted: false,
         featured: "1",
         status: "active"
-    }).limit(6);
+    }).limit(6).sort({
+        position: "desc"
+    });
 
-    const newProducts = productHelper.pricenewProducts(productsFeatured);
+    const newProductsFeatured = productHelper.pricenewProducts(productsFeatured);
 
     // Hết phần lấy sản phẩm nổi bật
 
+    // Lấy sản phẩm mới nhất
+    const productsNew = await Product.find({
+        deleted: false,
+        status: "active"
+    }).limit(6).sort({ position: "desc" });
+
+    const newProductsNew = productHelper.pricenewProducts(productsNew);
+    // Hết phần lấy sản phẩm mới nhất
+
     res.render('client/pages/home/index', {
         pageTitle: "Trang chủ",
-        productsFeatured: newProducts
+        productsFeatured: newProductsFeatured,
+        productsNew: newProductsNew
     });
 };

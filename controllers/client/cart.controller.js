@@ -37,7 +37,6 @@ module.exports.addPost = async (req, res) => {
                 $push: { products: objectCart }
             }
         );
-
     }
     req.flash("success", "Bạn đã thêm thành công sản phẩm vào giỏ hàng!");
     res.redirect("back");

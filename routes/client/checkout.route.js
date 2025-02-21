@@ -4,4 +4,6 @@ const controller = require("../../controllers/client/checkout.controller");
 
 route.get('/', controller.index);
 
+route.post('/order', controller.order);
+
 module.exports = route;

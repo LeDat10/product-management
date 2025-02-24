@@ -13,26 +13,28 @@ block main
 
         .row 
             .col-12 
-                .chat 
+                .chat(my-id=user.id)
                     .inner-body 
-                        .inner-incoming 
-                            .inner-name Lê Văn A 
-                            .inner-content 
-                                | Hello, Tôi tên A 
-                        .inner-outgoing 
-                            .inner-content 
-                                | Xin chào, Tôi tên B 
-                        .inner-incoming 
-                            .inner-name Lê Văn A 
-                            .inner-content 
-                                | Bạn khỏe không?
-                        .inner-outgoing 
-                            .inner-content 
-                                | Tôi khỏe. Còn bạn?
-                        .inner-incoming 
-                            .inner-name Lê Văn A 
-                            .inner-content 
-                                | Tôi cũng khỏe
+                        each chat in chats 
+                            div(class=(chat.infoUser.id == user.id ? "inner-outgoing" : "inner-incoming"))
+                                if (chat.infoUser.id !== user.id)
+                                    .inner-name #{chat.infoUser.fullName}
+                                .inner-content 
+                                    | #{chat.content}
+                        //- .inner-outgoing 
+                        //-     .inner-content 
+                        //-         | Xin chào, Tôi tên B 
+                        //- .inner-incoming 
+                        //-     .inner-name Lê Văn A 
+                        //-     .inner-content 
+                        //-         | Bạn khỏe không?
+                        //- .inner-outgoing 
+                        //-     .inner-content 
+                        //-         | Tôi khỏe. Còn bạn?
+                        //- .inner-incoming 
+                        //-     .inner-name Lê Văn A 
+                        //-     .inner-content 
+                        //-         | Tôi cũng khỏe
                     .inner-foot 
                         form(
                             class="inner-form"
@@ -41,6 +43,7 @@ block main
                             input(
                                 type="text"
                                 placeholder="Nhập nội dung..."
+                                name="content"
                             )
 
                             button(type="submit")

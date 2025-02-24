@@ -239,10 +239,16 @@
 .inner-body {
     padding:10px;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    max-height: 450px;
+    overflow-y: auto;
 }
 
 .inner-incoming {
-    width: 100%;
+    width: 40%;
+    margin-bottom: 5px;
+    align-self: flex-start;
 }
 
 .inner-name {
@@ -251,21 +257,24 @@
 
 .inner-incoming .inner-content {
     background-color: #ddd;
-    border-radius: 10px;
+    border-radius: 15px;
     display: inline-block;
     padding: 5px 10px;
+    width: 100%;
 }
 
 .inner-outgoing {
-    width: 100%;
-    text-align: right;
+    width: 40%;
+    margin-bottom: 5px;
+    align-self: flex-end;
 }
 
 .inner-outgoing .inner-content {
     background-color: pink;
-    border-radius: 10px;
+    border-radius: 15px;
     display: inline-block;
     padding: 5px 10px;
+    width: 100%;
 }
 
 .inner-foot {

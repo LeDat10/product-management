@@ -32,10 +32,9 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+global._io = io;
 
-io.on('connection', (socket) => {
-    console.log('a user connected', socket.id);
-});
+
 
 // Flash
 app.use(cookieParser('abcdef'));

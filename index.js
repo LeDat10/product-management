@@ -25,6 +25,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'pug');
 
+
+
+// socket.io
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+io.on('connection', (socket) => {
+    console.log('a user connected', socket.id);
+});
+
 // Flash
 app.use(cookieParser('abcdef'));
 app.use(session({ cookie: { maxAge: 60000 }}));
@@ -42,7 +54,12 @@ app.locals.moment = moment;
 // Routes
 route(app);
 routeAdmin(app);
+app.get("*", (req, res) => {
+    res.render("client/pages/errors/404", {
+        titlePage: "404 Not Found"
+    });
+});
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`App listening on port ${port}`);
 });

@@ -1,0 +1,50 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/alert.pug
+
+block main 
+    +alert-success(5000)
+    +alert-error(5000)
+
+    .container.my-3 
+        .row 
+            .col-12 
+                +box-head("Chat")
+
+        .row 
+            .col-12 
+                .chat 
+                    .inner-body 
+                        .inner-incoming 
+                            .inner-name Lê Văn A 
+                            .inner-content 
+                                | Hello, Tôi tên A 
+                        .inner-outgoing 
+                            .inner-content 
+                                | Xin chào, Tôi tên B 
+                        .inner-incoming 
+                            .inner-name Lê Văn A 
+                            .inner-content 
+                                | Bạn khỏe không?
+                        .inner-outgoing 
+                            .inner-content 
+                                | Tôi khỏe. Còn bạn?
+                        .inner-incoming 
+                            .inner-name Lê Văn A 
+                            .inner-content 
+                                | Tôi cũng khỏe
+                    .inner-foot 
+                        form(
+                            class="inner-form"
+                            action=""
+                        )
+                            input(
+                                type="text"
+                                placeholder="Nhập nội dung..."
+                            )
+
+                            button(type="submit")
+                                i.fa-solid.fa-paper-plane
+
+
+        

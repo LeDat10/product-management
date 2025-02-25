@@ -21,20 +21,9 @@ block main
                                     .inner-name #{chat.infoUser.fullName}
                                 .inner-content 
                                     | #{chat.content}
-                        //- .inner-outgoing 
-                        //-     .inner-content 
-                        //-         | Xin chào, Tôi tên B 
-                        //- .inner-incoming 
-                        //-     .inner-name Lê Văn A 
-                        //-     .inner-content 
-                        //-         | Bạn khỏe không?
-                        //- .inner-outgoing 
-                        //-     .inner-content 
-                        //-         | Tôi khỏe. Còn bạn?
-                        //- .inner-incoming 
-                        //-     .inner-name Lê Văn A 
-                        //-     .inner-content 
-                        //-         | Tôi cũng khỏe
+                        div(class="inner-list-typing")
+                           
+
                     .inner-foot 
                         form(
                             class="inner-form"
@@ -45,9 +34,11 @@ block main
                                 placeholder="Nhập nội dung..."
                                 name="content"
                             )
-
+                            span(class="button-icon btn btn-light mx-2") <i class="fa-regular fa-face-smile"></i>
                             button(type="submit")
                                 i.fa-solid.fa-paper-plane
-
+    
+    div(class="tooltip" role="tooltip")
+        emoji-picker(class="light")
 
         
